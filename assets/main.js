@@ -14,10 +14,11 @@ $(function() {
 });
 
 function showStart() {
-  var source = $("#start-hdbs").html();
-  var template = Handlebars.compile(source);
-  var html = template();
-  $("#content").html(html);
+  /* var source = $("#start-hdbs").html();
+     var template = Handlebars.compile(source);
+     var html = template();
+     $("#content").html(html); */
+  switchTo('start-hdbs');
 }
 
 function getTaskData(client) {
@@ -43,22 +44,37 @@ function getTaskData(client) {
 }
 
 function showTaskData(tasks) {
-  var context = {
-    project_tasks: tasks.data
-  };
-  var source = $("#tasks-hdbs").html();
-  var template = Handlebars.compile(source);
-  var html = template(context);
-  $("#content").html(html);
+  /*  var context = {
+      project_tasks: tasks.data
+    };
+    var source = $("#tasks-hdbs").html();
+    var template = Handlebars.compile(source);
+    var html = template(context);
+    $("#content").html(html); */
+  switchTo('tasks-hdbs', context);
 }
 
 function showError(response) {
-  var context = {
-    'status': response.status,
-    'statusText': response.statusText
-  };
-  var source = $("#error-hdbs").html();
+  /*  var context = {
+      'status': response.status,
+      'statusText': response.statusText
+    };
+    var source = $("#error-hdbs").html();
+    var template = Handlebars.compile(source);
+    var html = template(context);
+    $("#content").html(html); */
+    switchTo('error-hdbs', context);
+}
+
+// Refactor the template code
+function switchTo(template_name, context) {
+  var template_id = "#" + template_name;
+  var source = $(template_id).html();
   var template = Handlebars.compile(source);
-  var html = template(context);
+  if (context) {
+    var html = template(context);
+  } else {
+    var html = template();
+  }
   $("#content").html(html);
 }
