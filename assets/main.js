@@ -26,7 +26,9 @@ function getTaskData(client) {
   // based on the Asana's Get Project Tasks doc
   var settings = {
     url: 'https://app.asana.com/api/1.0/projects/1114672456098820/tasks',
-    headers: {"Authorization": "Bearer 0/d44bc72da8f853a0d5b0b0263e5dc186"},
+    //headers: {"Authorization": "Bearer 0/d44bc72da8f853a0d5b0b0263e5dc186"},
+    headers: {"Authorization": "Bearer {{setting.token}}"},
+    secure: true,
     type: 'GET',
     dataType: 'json'
   };
