@@ -44,25 +44,27 @@ function getTaskData(client) {
 }
 
 function showTaskData(tasks) {
-  /*  var context = {
-      project_tasks: tasks.data
-    };
-    var source = $("#tasks-hdbs").html();
-    var template = Handlebars.compile(source);
-    var html = template(context);
-    $("#content").html(html); */
+  var context = {
+     project_tasks: tasks.data
+  };
+    /*  var source = $("#tasks-hdbs").html();
+      var template = Handlebars.compile(source);
+      var html = template(context);
+      $("#content").html(html); */
   switchTo('tasks-hdbs', context);
 }
 
 function showError(response) {
-  /*  var context = {
-      'status': response.status,
-      'statusText': response.statusText
-    };
-    var source = $("#error-hdbs").html();
-    var template = Handlebars.compile(source);
-    var html = template(context);
-    $("#content").html(html); */
+  var context = {
+    'status': response.status,
+    'statusText': response.statusText
+  };
+    /*
+      var source = $("#error-hdbs").html();
+      var template = Handlebars.compile(source);
+      var html = template(context);
+      $("#content").html(html); 
+    */
     switchTo('error-hdbs', context);
 }
 
